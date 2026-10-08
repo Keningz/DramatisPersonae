@@ -1,0 +1,34 @@
+
+/* ---------- Romance of the Three Kingdoms: sides, timeline, swimlanes */
+:root{--han:#A67C1E;--qun:#857B6E;--wei:#2D5C99;--shu:#2F7D47;--wu:#B53A33;--jin:#7550A6}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--han:#E0B546;--qun:#ABA396;--wei:#7FA6E6;--shu:#6CC387;--wu:#F07A6E;--jin:#B898E6} }
+:root[data-theme="dark"]{--han:#E0B546;--qun:#ABA396;--wei:#7FA6E6;--shu:#6CC387;--wu:#F07A6E;--jin:#B898E6}
+.page{--f-greek:"EB Garamond","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif}
+.eyebrow .gr{font-family:var(--f-display);letter-spacing:.3em;font-weight:700}
+.cgr{font-size:15px;letter-spacing:.02em}
+.rgr{font-size:13.5px}
+
+.camp-han .ring{stroke:var(--han)} .camp-qun .ring{stroke:var(--qun)} .camp-wei .ring{stroke:var(--wei)}
+.camp-shu .ring{stroke:var(--shu)} .camp-wu .ring{stroke:var(--wu)} .camp-jin .ring{stroke:var(--jin)}
+.pill.campp{font-weight:600}
+.pill.campp.camp-han{color:var(--han)} .pill.campp.camp-qun{color:var(--qun)} .pill.campp.camp-wei{color:var(--wei)}
+.pill.campp.camp-shu{color:var(--shu)} .pill.campp.camp-wu{color:var(--wu)} .pill.campp.camp-jin{color:var(--jin)}
+.pill.chp{color:var(--muted)}
+.sw{display:inline-block;width:14px;height:14px;border-radius:50%;border:3px solid;box-sizing:border-box;background:var(--paper)}
+.sw.camp-han{border-color:var(--han)} .sw.camp-qun{border-color:var(--qun)} .sw.camp-wei{border-color:var(--wei)}
+.sw.camp-shu{border-color:var(--shu)} .sw.camp-wu{border-color:var(--wu)} .sw.camp-jin{border-color:var(--jin)}
+.legend .lg:first-child{gap:6px 14px}
+
+/* swimlanes and acts */
+.deco .lane{fill:var(--paper);opacity:.55;stroke:none}
+.deco .lane-wei,.deco .lane-wu{opacity:.32}
+.deco .lname{font-family:var(--f-display);font-size:17px;font-weight:700;fill:var(--ink);opacity:.5;letter-spacing:0}
+.deco .lname.l-en{font-family:var(--f-body);font-size:12px;letter-spacing:.18em}
+.deco .act{font-family:var(--f-display);font-size:15px;font-weight:700;fill:var(--ink);opacity:.62;letter-spacing:.12em}
+.page[data-lang="en"] .deco .act{font-size:13px;letter-spacing:.04em}
+.deco .actch{font-size:11px;letter-spacing:.06em;fill:var(--muted);font-variant-numeric:tabular-nums}
+.deco .actsep{stroke:var(--hair);stroke-dasharray:3 5}
+.nowline line{stroke:var(--foe);stroke-width:1.6;opacity:.75}
+.nowline rect{fill:var(--foe)}
+.nowline text{fill:#fff;font-family:var(--f-body);font-size:11.5px;font-weight:700;font-variant-numeric:tabular-nums}
+#map.mode-fc .nowline{display:none}

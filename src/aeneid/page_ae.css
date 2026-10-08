@@ -1,0 +1,7 @@
+
+/* ---------- Aeneid: Latin names in inscriptional capitals (EB Garamond) instead of Greek */
+.page{--f-greek:"EB Garamond","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif}
+.cgr,.rgr,.eyebrow .gr{letter-spacing:.14em}
+.cgr{font-size:15px}
+.rgr{font-size:13px}
+.deco .gk{letter-spacing:.24em}

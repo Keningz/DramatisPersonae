@@ -1,0 +1,153 @@
+/* ---------- the timeline engine (common/timeline.js): people and relationships through time, the slider, the panel */
+/* people through time */
+.node .glow{fill:none;stroke:var(--god);stroke-width:7;opacity:0}
+.node.fresh .glow{opacity:.9;animation:tlpulse 1.4s ease-out 1}
+@keyframes tlpulse{0%{stroke-width:16;opacity:0}30%{opacity:.95}100%{stroke-width:7;opacity:.9}}
+.node .dead{display:none}
+.node.isdead .dead{display:inline}
+.node.dying .dead circle{fill:var(--foe)}
+.node.gone .flip{filter:url(#tl-grey)}
+.node.gone .ring{stroke:var(--muted)}
+.node.gone{opacity:.62}
+.node.fut{opacity:.11}
+.node.fut .nm,.node.fut .sb{opacity:0}
+.node.fut:hover{opacity:.5}
+.node.fut:hover .nm{opacity:1}
+#map.hov .node.gone:not(.on){opacity:.2}
+#map.mode-fc .node.fut{opacity:0;pointer-events:none}
+.mini.gone use{filter:url(#tl-grey)}
+.mini.gone .ring{stroke:var(--muted)}
+
+/* relationships through time */
+.edge.t-mas{stroke:var(--mas);stroke-dasharray:10 3 2 3}
+#map.mode-ov .edge{opacity:.3}
+#map.mode-ov .edge.past{opacity:.09}
+#map.mode-ov .edge.fresh{opacity:.95;stroke-width:2.8}
+#map.mode-fc .edge.past.vis{opacity:.45}
+.elab.fresh rect{stroke-width:2.4;fill:var(--paper-2)}
+#map.mode-ov.hov .edge.fresh:not(.on){opacity:.12}
+
+/* ---------- the timeline */
+.tl{background:var(--paper);border:1px solid var(--hair);border-radius:12px;padding:10px 14px 10px;margin-bottom:8px}
+.tlhead{display:flex;align-items:center;gap:12px;min-width:0}
+.tlbtn{font:inherit;font-size:13.5px;height:34px;border:1px solid var(--hair);background:var(--paper-2);color:var(--ink);border-radius:999px;cursor:pointer;flex:none}
+.tlbtn:hover{border-color:var(--muted)}
+.tlplay{width:34px;padding:0;display:grid;place-items:center}
+.tlplay .ic{font-size:12px;line-height:1;letter-spacing:-.1em}
+.tlplay.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tlall{padding:0 14px}
+.tlall[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tlnow{flex:1;min-width:0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tlch{font-family:var(--f-display);font-weight:900;font-size:20px;letter-spacing:.06em;white-space:nowrap}
+.page[data-lang="en"] .tlch{letter-spacing:0;font-weight:700;font-size:21px}
+.tltitle{font-family:var(--f-display);font-size:15px;color:var(--muted);min-width:0}
+.tltrack{position:relative;height:38px;margin:10px 0 4px;cursor:pointer;touch-action:none;border-radius:8px;outline:none}
+.tltrack:focus-visible{box-shadow:0 0 0 2px var(--aid)}
+.tlacts{position:absolute;left:0;top:0;bottom:0;display:flex;border-radius:8px;overflow:hidden;background:var(--paper-2)}
+.tlact{position:relative;border-right:1px solid var(--hair);display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;min-width:0}
+.tlact:last-child{border-right:0}
+.tlact .tln{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:clip;max-width:100%;padding:0 2px;pointer-events:none}
+.tlact.cur{background:color-mix(in srgb,var(--foe) 10%,transparent)}
+.tlact.cur .tln{color:var(--ink);font-weight:600}
+.tlend{position:absolute;right:0;top:0;bottom:0;display:flex;white-space:nowrap;overflow:hidden;align-items:flex-end;justify-content:center;padding-bottom:4px;font-size:11.5px;color:var(--muted);border-radius:8px;background:var(--paper-2);margin-left:4px;pointer-events:none}
+.tltrack.all .tlend{color:var(--ink);font-weight:600}
+.tlfill{position:absolute;left:0;top:0;height:5px;border-radius:3px;background:var(--foe);opacity:.75;pointer-events:none}
+.tltrack.all .tlfill{background:var(--ink);opacity:.35}
+.tlhandle{position:absolute;top:-2px;width:4px;height:22px;margin-left:-2px;border-radius:2px;background:var(--foe);pointer-events:none;box-shadow:0 0 0 2px var(--paper)}
+.tlhandle::before{content:"";position:absolute;left:50%;top:-6px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--foe);box-shadow:0 0 0 2px var(--paper)}
+.tltrack.all .tlhandle,.tltrack.all .tlhandle::before{background:var(--ink)}
+.tltrack.drag .tlhandle::before{width:18px;height:18px;margin-left:-9px;top:-7px}
+.tlstat{font-size:13px;color:var(--muted);min-height:20px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.tlstat button{font:inherit;font-size:13px;border:0;background:none;color:var(--ink);cursor:pointer;padding:0 1px;text-decoration:underline;text-decoration-color:var(--hair);text-underline-offset:3px}
+.tlstat button:hover{text-decoration-color:var(--ink)}
+.tlstat .st{font-size:11.5px;border-radius:999px;padding:0 7px;line-height:1.7;border:1px solid currentColor}
+.tlstat .st-in{color:var(--god)} .tlstat .st-r{color:var(--aid)} .tlstat .st-out{color:var(--foe)}
+.tlstat .sep{opacity:.5;margin:0 4px}
+.tlstat .none{opacity:.8}
+
+/* ---------- panel: chapter chips, sides, life story, how a relationship changed */
+.chref{font:inherit;font-size:12px;font-variant-numeric:tabular-nums;border:1px solid var(--hair);background:var(--paper-2);color:var(--ink);border-radius:999px;padding:0 7px;line-height:1.7;cursor:pointer;white-space:nowrap;vertical-align:1px}
+.chref:hover{border-color:var(--foe);color:var(--foe)}
+.chref.ghost{visibility:hidden}
+.cbio .chref,.cicon .chref{margin:0 2px}
+.camps{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;margin:8px 0 0!important}
+.camps b{font-weight:600;color:var(--muted);margin-right:2px}
+.camps .cstep{display:inline-flex;align-items:center;gap:4px}
+.camps .arr{color:var(--muted)}
+.later{opacity:.42}
+.nowc .chref,.nowp .chref{background:var(--foe);border-color:var(--foe);color:#fff}
+.lifeh{font-family:var(--f-display);font-size:16px;font-weight:700;margin:16px 0 6px;padding-top:10px;border-top:1px solid var(--hair)}
+.life{list-style:none;margin:0;padding:0}
+.litem,.hitem{display:grid;grid-template-columns:62px 1fr;gap:8px;padding:7px 0;border-bottom:1px dashed var(--hair);align-items:start}
+.page[data-lang="en"] .litem,.page[data-lang="en"] .hitem{grid-template-columns:52px 1fr}
+.litem .chref,.hitem .chref{justify-self:start;margin-top:2px}
+.lbody{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;min-width:0;font-size:13.5px}
+.lwho{display:inline-flex;align-items:center;gap:5px;font:inherit;font-size:13.5px;font-weight:600;border:0;background:none;color:var(--ink);cursor:pointer;padding:0}
+.lwho:hover span{text-decoration:underline}
+.lbody button.pill{font:inherit;font-size:12px;background:transparent;cursor:pointer;line-height:1.6}
+.lbody button.pill:hover{background:var(--paper-2)}
+.ltext{flex-basis:100%;font-size:13px;color:var(--muted);line-height:1.55}
+.ev{font-size:13px;font-weight:600}
+.ev-in{color:var(--god)} .ev-out{color:var(--foe)}
+.hist .hl{font-family:var(--f-display);font-size:15px}
+.hist .src{flex-basis:100%;margin:0!important;font-size:12px!important}
+.hitem.nowp{background:color-mix(in srgb,var(--foe) 6%,transparent);border-radius:6px}
+.rlife{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.chn{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:999px;background:var(--foe);color:#fff;font-size:11.5px;font-weight:700;font-variant-numeric:tabular-nums;padding:0 4px}
+
+@media (max-width: 700px){
+  .tl{padding:9px 10px}
+  .tlch{font-size:17px}
+  .tltitle{font-size:13.5px;flex-basis:100%}
+  .tlact .tln{font-size:10.5px}
+  .tlend{font-size:10px}
+}
+
+/* deaths: everyone dead is greyed on the timeline; only a violent death carries the ✕ */
+.pill.nat{color:var(--muted)}
+.ev-nat{color:var(--muted)}
+.sw.gonesw{border-color:var(--muted);background:var(--hair)}
+
+/* ---------- the switch for the last forty chapters (pages with DATA.cut) */
+:root{--late:#9A6B1F}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--late:#D9A956} }
+:root[data-theme="dark"]{--late:#D9A956}
+.tllate{padding:0 12px 0 8px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.tllate .sw2{flex:none;width:28px;height:16px;border-radius:999px;background:var(--hair);position:relative;transition:background .2s}
+.tllate .sw2::after{content:"";position:absolute;left:2px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--paper);box-shadow:0 1px 2px rgba(0,0,0,.25);transition:left .2s}
+.tllate[aria-pressed="true"]{border-color:var(--late);color:var(--late)}
+.tllate[aria-pressed="true"] .sw2{background:var(--late)}
+.tllate[aria-pressed="true"] .sw2::after{left:14px}
+@media (prefers-reduced-motion: reduce){ .tllate .sw2,.tllate .sw2::after{transition:none} }
+.tlact[hidden]{display:none}
+.tlact.lateact{background:repeating-linear-gradient(135deg,transparent 0 6px,color-mix(in srgb,var(--late) 13%,transparent) 6px 8px)}
+.tlact.lateact .tln{color:var(--late)}
+.tltrack.inlate .tlfill,.tltrack.inlate .tlhandle,.tltrack.inlate .tlhandle::before{background:var(--late)}
+.xu{display:inline-block;font-size:10.5px;line-height:1.5;padding:0 5px;border-radius:4px;background:color-mix(in srgb,var(--late) 15%,transparent);color:var(--late);margin-left:4px;vertical-align:1px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.page[data-lang="en"] .xu{letter-spacing:0;font-variant:small-caps}
+.tlch .xu{font-size:12px;vertical-align:3px}
+.litem .xu,.hitem .xu{margin:3px 0 0;justify-self:start}
+.litem.lt,.hitem.lt{background:linear-gradient(90deg,color-mix(in srgb,var(--late) 6%,transparent),transparent 70%)}
+.cbio-late{border-left:3px solid color-mix(in srgb,var(--late) 55%,transparent);padding-left:10px}
+.latehd{display:block;font-size:12px;font-weight:600;color:var(--late);letter-spacing:.08em;margin-bottom:2px}
+.clab{font-size:12px;color:var(--muted)}
+.camps .cstep{flex-wrap:wrap}
+.chn.chl{background:var(--late)}
+/* verses in a person's card */
+.verse{margin:10px 0 12px;padding:10px 14px 12px;border-radius:10px;background:var(--paper-2);border:1px solid var(--hair)}
+.verse figcaption{font-size:12.5px;color:var(--muted);letter-spacing:.06em;margin-bottom:6px}
+.vpic{font-size:13px;color:var(--muted);margin:0 0 8px!important;line-height:1.55}
+.vpic::before{content:"画 · ";color:var(--late)}
+.page[data-lang="en"] .vpic::before{content:"Picture · "}
+.vtext{margin:0!important;font-family:var(--f-display);font-size:16px;line-height:1.8;letter-spacing:.04em}
+.page[data-lang="en"] .vtext{font-family:var(--f-greek,var(--f-body));font-size:15.5px;line-height:1.5;letter-spacing:0}
+.page[data-lang="en"] .vtext .vl{padding-left:1.2em;text-indent:-1.2em}
+.vl{display:block}
+.vorig{margin:8px 0 0!important;font-family:var(--f-display);font-size:13px;color:var(--muted);line-height:1.65}
+.vnote{margin:8px 0 0!important;font-size:12.5px;color:var(--muted);line-height:1.55}
+.v-poem .vtext{font-size:15px}
+/* TV series: seals instead of portraits, spoiler notes */
+.node .ini,.mini .ini{font-family:var(--f-display);font-weight:700;pointer-events:none}
+.page[data-lang="en"] .node .ini,.page[data-lang="en"] .mini .ini{font-family:var(--f-greek)}
+.mini.gone .ini{filter:url(#tl-grey)}
+.cbio.spoil{color:var(--muted);font-size:12.5px;font-style:italic;margin-top:6px}

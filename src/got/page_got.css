@@ -1,0 +1,103 @@
+/* ---------- Game of Thrones: sides, regions, seals */
+:root{--stark:#5E7488;--bolton:#C2577A;--nw:#2E2E2E;--beyond:#8A6A42;--dead:#2FA9C4;--lannister:#B8222B;--baratheon:#C9970C;
+  --targaryen:#7B3B9E;--greyjoy:#2D6E6A;--river:#2F62B3;--arryn:#7FA8CF;--tyrell:#4E9A3A;--martell:#DD7420;--faith:#A2937A;
+  --essos:#8E8A2E;--none:#9A9A9A;--love:#C83F7E;--seal:#8E2A22;--icewall:#CFE3EA}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--stark:#9DB4C8;--bolton:#E98FAA;--nw:#D2D2D2;--beyond:#C6A479;
+  --dead:#6FD3E6;--lannister:#F0676D;--baratheon:#F0C845;--targaryen:#BC8EE0;--greyjoy:#62B1AB;--river:#7BA6F0;--arryn:#A9CBEB;
+  --tyrell:#86CF6F;--martell:#F6A45D;--faith:#CABC9E;--essos:#C8C35E;--none:#8C8C8C;--love:#F28AB8;--seal:#C9564C;--icewall:#2E4650} }
+:root[data-theme="dark"]{--stark:#9DB4C8;--bolton:#E98FAA;--nw:#D2D2D2;--beyond:#C6A479;--dead:#6FD3E6;--lannister:#F0676D;
+  --baratheon:#F0C845;--targaryen:#BC8EE0;--greyjoy:#62B1AB;--river:#7BA6F0;--arryn:#A9CBEB;--tyrell:#86CF6F;--martell:#F6A45D;
+  --faith:#CABC9E;--essos:#C8C35E;--none:#8C8C8C;--love:#F28AB8;--seal:#C9564C;--icewall:#2E4650}
+.page{--f-greek:"EB Garamond","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif}
+.eyebrow .gr{font-family:var(--f-greek);letter-spacing:.12em;font-weight:500}
+.cgr{font-size:15px;letter-spacing:.02em}
+.rgr{font-size:13px}
+.rnote{color:var(--muted);font-size:13px;margin:-6px 0 14px}
+
+/* the outer ring: whose side */
+.camp-stark .ring{stroke:var(--stark)} .camp-bolton .ring{stroke:var(--bolton)} .camp-nw .ring{stroke:var(--nw)}
+.camp-beyond .ring{stroke:var(--beyond)} .camp-dead .ring{stroke:var(--dead)} .camp-lannister .ring{stroke:var(--lannister)}
+.camp-baratheon .ring{stroke:var(--baratheon)} .camp-targaryen .ring{stroke:var(--targaryen)} .camp-greyjoy .ring{stroke:var(--greyjoy)}
+.camp-river .ring{stroke:var(--river)} .camp-arryn .ring{stroke:var(--arryn)} .camp-tyrell .ring{stroke:var(--tyrell)}
+.camp-martell .ring{stroke:var(--martell)} .camp-faith .ring{stroke:var(--faith)} .camp-essos .ring{stroke:var(--essos)}
+.camp-none .ring{stroke:var(--none);stroke-dasharray:9 5}
+.pill.campp{font-weight:600}
+.pill.campp.camp-stark{color:var(--stark)} .pill.campp.camp-bolton{color:var(--bolton)} .pill.campp.camp-nw{color:var(--nw)}
+.pill.campp.camp-beyond{color:var(--beyond)} .pill.campp.camp-dead{color:var(--dead)} .pill.campp.camp-lannister{color:var(--lannister)}
+.pill.campp.camp-baratheon{color:var(--baratheon)} .pill.campp.camp-targaryen{color:var(--targaryen)} .pill.campp.camp-greyjoy{color:var(--greyjoy)}
+.pill.campp.camp-river{color:var(--river)} .pill.campp.camp-arryn{color:var(--arryn)} .pill.campp.camp-tyrell{color:var(--tyrell)}
+.pill.campp.camp-martell{color:var(--martell)} .pill.campp.camp-faith{color:var(--faith)} .pill.campp.camp-essos{color:var(--essos)}
+.pill.campp.camp-none{color:var(--none)}
+.pill.chp{color:var(--muted)}
+.sw{display:inline-block;width:14px;height:14px;border-radius:50%;border:3px solid;box-sizing:border-box;background:var(--paper)}
+.sw.camp-stark{border-color:var(--stark)} .sw.camp-bolton{border-color:var(--bolton)} .sw.camp-nw{border-color:var(--nw)}
+.sw.camp-beyond{border-color:var(--beyond)} .sw.camp-dead{border-color:var(--dead)} .sw.camp-lannister{border-color:var(--lannister)}
+.sw.camp-baratheon{border-color:var(--baratheon)} .sw.camp-targaryen{border-color:var(--targaryen)} .sw.camp-greyjoy{border-color:var(--greyjoy)}
+.sw.camp-river{border-color:var(--river)} .sw.camp-arryn{border-color:var(--arryn)} .sw.camp-tyrell{border-color:var(--tyrell)}
+.sw.camp-martell{border-color:var(--martell)} .sw.camp-faith{border-color:var(--faith)} .sw.camp-essos{border-color:var(--essos)}
+.sw.camp-none{border-color:var(--none);border-style:dashed}
+.legend .lg:first-child{gap:6px 14px}
+.sealmark{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:3px;background:var(--seal);color:#fff;font-size:11px;line-height:1;font-family:var(--f-display);font-weight:700}
+
+/* the seals */
+.node .ini{font-size:16px}
+.page[data-lang="en"] .node .ini{font-size:17px;font-weight:600}
+.node .seal rect{fill:var(--seal);stroke:var(--paper);stroke-width:1.6}
+.node .seal text{fill:#fff;font-family:var(--f-display);font-size:11.5px;font-weight:700}
+#map.mode-fc .node .seal{display:none}
+.node.fut .seal{display:none}
+.emlg{margin-top:10px;font-size:13px}
+.emlg summary{cursor:pointer;color:var(--muted);width:max-content;max-width:100%}
+.emlg summary:hover{color:var(--ink)}
+.emgrid{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px}
+.emgrid .lgi{display:inline-flex;align-items:center;gap:5px}
+.emi{width:24px;height:24px;color:var(--ink);flex:none}
+
+/* love lines */
+.tog.t-love svg line{stroke:var(--love);stroke-width:2.4}
+.edge.t-love{stroke:var(--love)}
+#map.mode-fc .edge.t-love.vis{stroke-width:2.6}
+.elab.t-love rect{stroke:var(--love)} .elab.t-love text{fill:var(--love)}
+.pill.t-love{color:var(--love)}
+
+/* the regions */
+.deco .reg{fill:var(--paper);opacity:.55}
+.deco .reg-beyond{fill:color-mix(in srgb,var(--beyond) 6%,var(--paper));opacity:.75}
+.deco .reg-nw{fill:color-mix(in srgb,var(--nw) 4%,var(--paper));opacity:.75}
+.deco .reg-stark{fill:color-mix(in srgb,var(--stark) 7%,var(--paper));opacity:.75}
+.deco .reg-greyjoy{fill:color-mix(in srgb,var(--greyjoy) 7%,var(--paper));opacity:.75}
+.deco .reg-river{fill:color-mix(in srgb,var(--river) 6%,var(--paper));opacity:.75}
+.deco .reg-arryn{fill:color-mix(in srgb,var(--arryn) 9%,var(--paper));opacity:.75}
+.deco .reg-baratheon{fill:color-mix(in srgb,var(--baratheon) 7%,var(--paper));opacity:.75}
+.deco .reg-tyrell{fill:color-mix(in srgb,var(--tyrell) 7%,var(--paper));opacity:.75}
+.deco .reg-lannister{fill:color-mix(in srgb,var(--lannister) 5%,var(--paper));opacity:.75}
+.deco .reg-martell{fill:color-mix(in srgb,var(--martell) 7%,var(--paper));opacity:.75}
+.deco .reg-targaryen{fill:color-mix(in srgb,var(--targaryen) 6%,var(--paper));opacity:.75}
+.deco .reg-essos{fill:color-mix(in srgb,var(--essos) 7%,var(--paper));opacity:.75}
+.deco .regname{font-family:var(--f-display);font-size:14px;font-weight:700;letter-spacing:.16em;opacity:.8}
+.page[data-lang="en"] .deco .regname{font-family:var(--f-body);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.deco .c-beyond{fill:var(--beyond)} .deco .c-nw{fill:var(--nw)} .deco .c-stark{fill:var(--stark)} .deco .c-greyjoy{fill:var(--greyjoy)}
+.deco .c-river{fill:var(--river)} .deco .c-arryn{fill:var(--arryn)} .deco .c-baratheon{fill:var(--baratheon)} .deco .c-tyrell{fill:var(--tyrell)}
+.deco .c-lannister{fill:var(--lannister)} .deco .c-martell{fill:var(--martell)} .deco .c-targaryen{fill:var(--targaryen)} .deco .c-essos{fill:var(--essos)}
+.deco .wall{fill:var(--icewall);stroke:color-mix(in srgb,var(--dead) 50%,transparent);stroke-width:1}
+.deco .wallname{font-family:var(--f-display);font-size:10px;font-weight:700;letter-spacing:.5em;fill:var(--ink);opacity:.55}
+.page[data-lang="en"] .deco .wallname{font-family:var(--f-body);font-size:9px;letter-spacing:.4em}
+.deco .place{font-size:11px;fill:var(--muted);letter-spacing:.08em}
+.page[data-lang="en"] .deco .place{letter-spacing:.02em;font-style:italic;font-family:var(--f-greek);font-size:12px}
+.deco .gl{stroke:var(--kin);stroke-width:1.15;opacity:.5;fill:none}
+.deco .gl.con{stroke-dasharray:4 3}
+.deco .gl.sis{stroke-dasharray:2 3;opacity:.45}
+.deco .ghost circle{fill:var(--paper);stroke:var(--muted);stroke-dasharray:2 2.4;stroke-width:1}
+.deco .gname{font-size:10px;fill:var(--muted);letter-spacing:0}
+.deco .gtag{font-size:10px;fill:var(--muted);letter-spacing:.04em}
+.deco .amuhd{font-size:12px;fill:var(--muted);letter-spacing:.2em}
+.deco .whouse{font-size:12px;fill:var(--muted);letter-spacing:.06em}
+.deco .amu{font-family:var(--f-display);font-size:14px;fill:var(--ink);opacity:.7;letter-spacing:.08em}
+.page[data-lang="en"] .deco .amu{font-family:var(--f-greek);font-size:13.5px;letter-spacing:0;font-style:italic}
+.page[data-lang="en"] .deco .whouse{font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+
+/* in the overview the relationship lines stay faint until an episode or a person brings them forward */
+#map.mode-ov .edge{opacity:.05}
+#map.mode-ov .edge.past{opacity:.035}
+#map.mode-ov .edge.fresh{opacity:.9;stroke-width:2.6}
+.ch .cmeta .pill{white-space:normal}

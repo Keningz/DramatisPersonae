@@ -3,6 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTTJVF6E9D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DTTJVF6E9D');
+</script>
 <title>红楼梦人物谱</title>
 <meta name="description" content="《红楼梦》四大家族人物关系图，可按回目查看，前八十回与后四十回分开，中英双语 · A bilingual family tree of the Dream of the Red Chamber with a chapter timeline.">
 <style>:root{color-scheme:light}html{-webkit-text-size-adjust:100%}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -411,6 +420,11 @@ button:focus-visible{outline:2px solid var(--aid);outline-offset:2px}
 .vorig{margin:8px 0 0!important;font-family:var(--f-display);font-size:13px;color:var(--muted);line-height:1.65}
 .vnote{margin:8px 0 0!important;font-size:12.5px;color:var(--muted);line-height:1.55}
 .v-poem .vtext{font-size:15px}
+/* TV series: seals instead of portraits, spoiler notes */
+.node .ini,.mini .ini{font-family:var(--f-display);font-weight:700;pointer-events:none}
+.page[data-lang="en"] .node .ini,.page[data-lang="en"] .mini .ini{font-family:var(--f-greek)}
+.mini.gone .ini{filter:url(#tl-grey)}
+.cbio.spoil{color:var(--muted);font-size:12.5px;font-style:italic;margin-top:6px}
 /* ---------- Dream of the Red Chamber: households, the family tree */
 :root{--ning:#B0413E;--rong:#2F5F98;--gong:#A8801E;--lin:#3D8A5A;--shi:#23838F;--wang:#C46A28;--xue:#8556A8;--out:#8C7B62;--kong:#687B88;--love:#C83F7E;--seal:#B8322E}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--ning:#EE7A72;--rong:#7FA8E6;--gong:#E0B546;--lin:#6CC08C;--shi:#5EC4CE;--wang:#F09B5F;--xue:#BC98E0;--out:#B3A48A;--kong:#A3B6C3;--love:#F28AB8;--seal:#D9564C} }
@@ -784,7 +798,7 @@ button:focus-visible{outline:2px solid var(--aid);outline-offset:2px}
 <div class="page" id="app" data-lang="zh">
 <header class="top">
   <div class="topbar">
-    <nav class="booknav" aria-label="书目 / Books"><a class="brand" href="index.html" data-xhref="index.html"><span class="l-zh" lang="zh-CN">人物谱</span><span class="l-en" lang="en">Dramatis Personae</span></a><span class="bn-sep" aria-hidden="true"></span><a href="odyssey.html" data-xhref="odyssey.html"><span class="l-zh" lang="zh-CN">奥德赛</span><span class="l-en" lang="en">Odyssey</span></a><a href="iliad.html" data-xhref="iliad.html"><span class="l-zh" lang="zh-CN">伊利亚特</span><span class="l-en" lang="en">Iliad</span></a><a href="aeneid.html" data-xhref="aeneid.html"><span class="l-zh" lang="zh-CN">埃涅阿斯纪</span><span class="l-en" lang="en">Aeneid</span></a><a href="journey.html" data-xhref="journey.html"><span class="l-zh" lang="zh-CN">西游记</span><span class="l-en" lang="en">Journey to the West</span></a><a href="sanguo.html" data-xhref="sanguo.html"><span class="l-zh" lang="zh-CN">三国演义</span><span class="l-en" lang="en">Three Kingdoms</span></a><a href="honglou.html" data-xhref="honglou.html" aria-current="page"><span class="l-zh" lang="zh-CN">红楼梦</span><span class="l-en" lang="en">Red Chamber</span></a></nav>
+    <nav class="booknav" aria-label="书目 / Books"><a class="brand" href="index.html" data-xhref="index.html"><span class="l-zh" lang="zh-CN">人物谱</span><span class="l-en" lang="en">Dramatis Personae</span></a><span class="bn-sep" aria-hidden="true"></span><a href="odyssey.html" data-xhref="odyssey.html"><span class="l-zh" lang="zh-CN">奥德赛</span><span class="l-en" lang="en">Odyssey</span></a><a href="iliad.html" data-xhref="iliad.html"><span class="l-zh" lang="zh-CN">伊利亚特</span><span class="l-en" lang="en">Iliad</span></a><a href="aeneid.html" data-xhref="aeneid.html"><span class="l-zh" lang="zh-CN">埃涅阿斯纪</span><span class="l-en" lang="en">Aeneid</span></a><a href="journey.html" data-xhref="journey.html"><span class="l-zh" lang="zh-CN">西游记</span><span class="l-en" lang="en">Journey to the West</span></a><a href="sanguo.html" data-xhref="sanguo.html"><span class="l-zh" lang="zh-CN">三国演义</span><span class="l-en" lang="en">Three Kingdoms</span></a><a href="honglou.html" data-xhref="honglou.html" aria-current="page"><span class="l-zh" lang="zh-CN">红楼梦</span><span class="l-en" lang="en">Red Chamber</span></a><a href="got.html" data-xhref="got.html"><span class="l-zh" lang="zh-CN">权力的游戏</span><span class="l-en" lang="en">Game of Thrones</span></a></nav>
     <div class="langsw" role="group" aria-label="语言 / Language">
       <button type="button" data-setlang="zh" aria-pressed="true" lang="zh-CN">中文</button>
       <button type="button" data-setlang="en" aria-pressed="false" lang="en">English</button>
@@ -881,7 +895,16 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
                   it — later chapters, deaths, changes of household, relationship phases and the `late` biographies.
      DATA.uniform the slider gives every chapter the same width (otherwise acts carry their own f0/f1 fractions,
                   matching the overview's time axis and its "now" line)
-     node.verses  poems shown in the person's card; node.born the birth family; camp entries may carry a label */
+     node.verses  poems shown in the person's card; node.born the birth family; camp entries may carry a label
+     DATA.seasons a TV series: chapters are episodes, numbered through the seasons (lengths given here) and shown as
+                  S3E9 / 第3季第9集; "(S3E9)" in running text becomes a chip
+     DATA.spoil   nothing after the slider's episode is shown in the panel (later life events, phases, sides, deaths)
+     DATA.remember the slider position is kept in the browser
+     node.subs    captions that change over time [[ep, zh, en]]; node.bios biography entries shown from their episode
+     node.full    full names; node.pre dead before the story begins (node.seen: first seen in a vision);
+     node.down    [[from, to, zh, en, zh back, en back]] dead for a while, then brought back; node.ini a seal letter
+     node.em      seal emblems over time [[ep, key]] drawn from <symbol id="em-key">; node.emHome the whole-series one
+     [data-from] / [data-until] elements of the map appear only between those chapters */
 (() => {
   const app = document.getElementById('app');
   const svg = document.getElementById('map');
@@ -892,15 +915,20 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
   const CX = DATA.CX, CY = DATA.CY, K_OV = DATA.R_OV / 40, ALL = 9999, FULL = DATA.last || 120, CUT = DATA.cut || 0;
   const CAMPKEYS = Object.keys(DATA.camp);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const LATEKEY = 'dp-late-' + (DATA.page || 'x');
+  const LATEKEY = 'dp-late-' + (DATA.page || 'x'), TKEY = 'dp-t-' + (DATA.page || 'x');
+  const SEAS = DATA.seasons || null, SPOIL = !!DATA.spoil;
+  const se = c => { let s = 1, n = c; for (const len of SEAS) { if (n <= len) return [s, n]; n -= len; s++; } return [s, n]; };
+  const seIdx = (s, e) => SEAS.slice(0, s - 1).reduce((a, b) => a + b, 0) + e;
+  const epCode = c => { const [s, e] = se(c); return `S${s}E${e}`; };
 
-  const nodeEl = {}, ptEl = {}, nmEl = {}, sbEl = {};
+  const nodeEl = {}, ptEl = {}, nmEl = {}, sbEl = {}, embEl = {};
   svg.querySelectorAll('.node').forEach(g => {
     const id = g.dataset.id;
-    nodeEl[id] = g; ptEl[id] = g.querySelector('.pt');
+    nodeEl[id] = g; ptEl[id] = g.querySelector('.pt'); embEl[id] = g.querySelector('.emb');
     nmEl[id] = g.querySelector('.nm'); sbEl[id] = g.querySelector('.sb');
   });
   const edgeEl = [], labEl = [];
+  const timed = [...svg.querySelectorAll('[data-from], [data-until]')];
   svg.querySelectorAll('.edge').forEach(p => edgeEl[+p.dataset.e] = p);
   svg.querySelectorAll('.elab').forEach(g => labEl[+g.dataset.e] = g);
   const adj = {};
@@ -919,10 +947,13 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
   const inBook = c => c <= lastCh();
   const isLate = c => CUT && c > CUT;
   const debuted = id => N[id].debut <= now();
-  const gone = id => !isAll() && N[id].dies && N[id].dies <= t;          // dead by the end of chapter t
+  const downAt = id => !isAll() && !!N[id].down && N[id].down.some(d => t >= d[0] && t < d[1]);   // dead for a while
+  const gone = id => !isAll() && (!!N[id].pre || (N[id].dies && N[id].dies <= t) || downAt(id));  // dead by the end of chapter t
   const violent = id => !!N[id].violent;                                  // only a violent death gets the ✕
-  const diedInBook = id => N[id].dies && inBook(N[id].dies);
-  const marked = id => violent(id) && diedInBook(id) && (isAll() || gone(id));
+  const diedInBook = id => !!N[id].pre || (N[id].dies && inBook(N[id].dies));
+  const deathShown = id => !!N[id].pre || (diedInBook(id) && (!SPOIL || isAll() || N[id].dies <= t));
+  const marked = id => (violent(id) && diedInBook(id) && (isAll() || gone(id))) || downAt(id);
+  const spoilHide = c => SPOIL && !isAll() && c > t;                     // not yet seen at the slider's episode
   const campAt = id => {
     const n = N[id];
     if (isAll()) return late || !n.home80 ? n.home : n.home80;
@@ -930,6 +961,15 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
     n.camps.forEach(([ch, cp]) => { if (ch <= t) c = cp; });
     return c;
   };
+  const emAt = id => {                     // the seal emblem in force at the slider's episode
+    const n = N[id];
+    if (!n.em) return null;
+    if (isAll()) return n.emHome;
+    let k = n.em[0][1];
+    n.em.forEach(([ch, g]) => { if (ch <= t) k = g; });
+    return k;
+  };
+  const XL = 'http://www.w3.org/1999/xlink';
   const phaseIdx = (e, tt = now()) => {    // index of the phase in force at chapter tt, -1 before the first
     let k = -1;
     e.phases.forEach((p, j) => { if (p.ch <= tt) k = j; });
@@ -947,10 +987,20 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
   const DIG = '零一二三四五六七八九';
   const cnum = n => n < 10 ? DIG[n] : n < 20 ? '十' + (n % 10 ? DIG[n % 10] : '') : n < 100 ? DIG[Math.floor(n / 10)] + '十' + (n % 10 ? DIG[n % 10] : '')
     : n === 100 ? '一百' : n < 110 ? '一百零' + DIG[n - 100] : '一百' + (n < 120 ? '一十' + (n % 10 ? DIG[n % 10] : '') : '二十');
-  const chName = c => lang === 'zh' ? `第${cnum(c)}回` : `Chapter ${c}`;
-  const chShort = c => lang === 'zh' ? `第${c}回` : `Ch. ${c}`;
+  const chName = c => SEAS ? (([s, e]) => lang === 'zh' ? `第${s}季第${e}集` : `Season ${s}, Episode ${e}`)(se(c))
+    : lang === 'zh' ? `第${cnum(c)}回` : `Chapter ${c}`;
+  const chShort = c => SEAS ? epCode(c) : lang === 'zh' ? `第${c}回` : `Ch. ${c}`;
   const campName = c => DATA.camp[c][lang];
-  const deathText = id => lang === 'zh' ? `第${N[id].dies}回${N[id].death}` : `${N[id].death_en}, ch. ${N[id].dies}`;
+  const deathText = id => N[id].pre ? (lang === 'zh' ? `剧前已故：${N[id].death}` : `Dead before the story: ${N[id].death_en}`)
+    : SEAS ? (lang === 'zh' ? `${epCode(N[id].dies)} ${N[id].death}` : `${N[id].death_en}, ${epCode(N[id].dies)}`)
+    : lang === 'zh' ? `第${N[id].dies}回${N[id].death}` : `${N[id].death_en}, ch. ${N[id].dies}`;
+  const subOf = id => {                    // the caption in force at the slider's chapter
+    const n = N[id];
+    if (!n.subs || !n.subs.length || isAll()) return L(n, 'sub');
+    let s = null;
+    n.subs.forEach(x => { if (x[0] <= t) s = x; });
+    return s ? (lang === 'zh' ? s[1] : s[2]) : L(n, 'sub');
+  };
   const T = {
     zh: { portrait: '小像', src: '出处：', back: n => `← 回到${n}`, trail: '足迹', title: DATA.title.zh,
           debut: c => `第${c}回登场`, died: '已去世', notyet: c => `第${c}回才登场`,
@@ -973,10 +1023,25 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
           lateBio: 'Chapters 81–120', verses: 'Verses' },
   };
   if (DATA.allHint) { T.zh.allHint = DATA.allHint.zh; T.en.allHint = DATA.allHint.en; }
+  if (SEAS) {
+    Object.assign(T.zh, { debut: c => `${epCode(c)} 登场`, notyet: c => `${epCode(c)} 才登场`, all: '全剧',
+      mention: c => `${epCode(c)} 首次提到`, seen: c => `${epCode(c)} 在幻象中出现`, none: '本集没有图中人物的大事',
+      later: n => `往后还有 ${n} 段经历，时间轴拖到后面的集数才显示。`, laterLife: n => `往后还有 ${n} 件事，拖到后面的集数才显示。` });
+    Object.assign(T.en, { debut: c => `Appears in ${epCode(c)}`, notyet: c => `Appears in ${epCode(c)}`, all: 'Whole series',
+      mention: c => `First mentioned in ${epCode(c)}`, seen: c => `Seen in a vision, ${epCode(c)}`,
+      none: 'Nothing happens to anyone on the map in this episode',
+      later: n => `${n} more passage${n > 1 ? 's' : ''} of this story appear further along the timeline.`,
+      laterLife: n => `${n} more event${n > 1 ? 's' : ''} appear further along the timeline.` });
+    if (DATA.allTitle) { T.zh.allTitle = () => DATA.allTitle.zh; T.en.allTitle = () => DATA.allTitle.en; }
+  }
   const lateTag = c => isLate(c) ? `<span class="xu" title="${esc(T[lang].lateTitle)}">${T[lang].lateTag}</span>` : '';
   // a chapter chip in running text: "(第25回)" / "(ch. 25)" become buttons that move the timeline there
   function linkChapters(s) {
     s = esc(s);
+    if (SEAS) {
+      return s.replace(/\(S(\d)E(\d+)(?:[—–]S(\d)E(\d+))?\)/g, (m, s1, e1, s2, e2) =>
+        `<button type="button" class="chref" data-ch="${seIdx(+s1, +e1)}">S${s1}E${e1}${s2 ? '–S' + s2 + 'E' + e2 : ''}</button>`);
+    }
     if (lang === 'zh') {
       return s.replace(/\(第([0-9、至—,，]+)回\)/g, (m, g) => {
         const c = parseInt(g, 10);
@@ -991,8 +1056,13 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
   const mini = (id, size) => {
     const sw = size < 50 ? 7 : 5, dead = marked(id);
     const mark = dead ? '<g class="dead" transform="translate(36 36)"><circle r="12"/><path d="M-5,-5 L5,5 M5,-5 L-5,5"/></g>' : '';
+    const n = N[id], em = emAt(id);
+    const ini = !n.ini ? '' : em
+      ? `<use xlink:href="#em-${em}" href="#em-${em}" x="-36" y="-47" width="72" height="72" color="${n.ink}"/>` +
+        `<text class="ini" y="31" dy=".36em" text-anchor="middle" font-size="${lang === 'zh' ? 20 : 21}" fill="${n.ink}">${esc(lang === 'zh' ? n.ini : n.ini_en)}</text>`
+      : `<text class="ini" y="0" dy=".36em" text-anchor="middle" font-size="${lang === 'zh' ? 50 : 58}" fill="${n.ink}">${esc(lang === 'zh' ? n.ini : n.ini_en)}</text>`;
     return `<svg class="mini camp-${campAt(id)}${gone(id) ? ' gone' : ''}" viewBox="-56 -56 112 112" width="${size}" height="${size}" aria-hidden="true">` +
-      `<use xlink:href="#pt-${id}" href="#pt-${id}" x="-50" y="-50" width="100" height="100"/><circle class="ring" r="50" stroke-width="${sw}"/>${mark}</svg>`;
+      `<use xlink:href="#pt-${id}" href="#pt-${id}" x="-50" y="-50" width="100" height="100"/>${ini}<circle class="ring" r="50" stroke-width="${sw}"/>${mark}</svg>`;
   };
 
   // ------------------------------------------------------------ geometry
@@ -1074,7 +1144,7 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
   function setNodeLabel(id) {
     const s = cur[id], role = s.role, n1 = nmEl[id], n2 = sbEl[id], r = 40 * s.k;
     n1.textContent = nm(id);
-    n2.textContent = L(N[id], 'sub');
+    n2.textContent = subOf(id);
     let fs1 = lang === 'en' ? 12 : 13.5, fs2 = 12, show2 = false, anchor = 'middle', x = 0, y1 = r + 16, y2 = 0;
     if (role === 'center') { fs1 = 22; fs2 = 13.5; show2 = true; y1 = r + 26; y2 = y1 + 18; }
     else if (role === 'ring' || role === 'outer') {
@@ -1105,7 +1175,7 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
       }
     }
     n2.style.display = show2 ? '' : 'none';
-    nodeEl[id].setAttribute('aria-label', T[lang].aria(nm(id), nodeStatus(id), L(N[id], 'sub')));
+    nodeEl[id].setAttribute('aria-label', T[lang].aria(nm(id), nodeStatus(id), subOf(id)));
   }
   function staggerOv() {
     if (mode !== 'ov') return;
@@ -1240,7 +1310,16 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
       g.classList.toggle('gone', !!gone(id));
       g.classList.toggle('isdead', marked(id));
       g.classList.toggle('fresh', !isAll() && n.debut === t);
-      g.classList.toggle('dying', !isAll() && violent(id) && n.dies === t);
+      g.classList.toggle('dying', !isAll() && ((violent(id) && n.dies === t) || (!!n.down && n.down.some(d => d[0] === t))));
+      const k = emAt(id), u = embEl[id];
+      if (k && u && u.dataset.k !== k) {
+        u.setAttribute('href', '#em-' + k); u.setAttributeNS(XL, 'xlink:href', '#em-' + k); u.dataset.k = k;
+      }
+    });
+    const nc = now();
+    timed.forEach(el => {
+      const f = +(el.dataset.from || 0), u = +(el.dataset.until || 1e9);
+      el.style.display = nc >= f && nc < u ? '' : 'none';
     });
   }
 
@@ -1317,8 +1396,10 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
   function pills(id) {
     const n = N[id], tt = T[lang];
     let s = `<span class="pill campp camp-${campAt(id)}">${esc(campName(campAt(id)))}</span>`;
-    s += `<span class="pill chp">${esc(tt.debut(n.debut))}</span>`;
-    if (diedInBook(id)) s += (violent(id) ? `<span class="pill dead">✕ ${esc(deathText(id))}</span>` : `<span class="pill nat">${esc(deathText(id))}</span>`) + lateTag(n.dies);
+    s += `<span class="pill chp">${esc(n.pre && tt.mention ? tt.mention(n.debut) : tt.debut(n.debut))}</span>`;
+    if (n.pre && n.seen && tt.seen && !spoilHide(n.seen)) s += `<span class="pill chp">${esc(tt.seen(n.seen))}</span>`;
+    if (deathShown(id)) s += (violent(id) ? `<span class="pill dead">✕ ${esc(deathText(id))}</span>` : `<span class="pill nat">${esc(deathText(id))}</span>`) + lateTag(n.dies);
+    else if (downAt(id)) { const d = n.down.find(x => t >= x[0] && t < x[1]); s += `<span class="pill dead">✕ ${esc(epCode(d[0]) + ' ' + (lang === 'zh' ? d[2] : d[3]))}</span>`; }
     if (n.born) s += `<span class="pill chp">${esc(tt.born(lang === 'zh' ? n.born : n.born_en))}</span>`;
     return s;
   }
@@ -1338,7 +1419,7 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
   const chipBtn = c => `<button type="button" class="chref" data-ch="${c}">${esc(chShort(c))}</button>`;
   const campLabel = c => c.length > 2 ? `<span class="clab">${esc(lang === 'zh' ? c[2] : c[3])}</span>` : '';
   function campLine(id) {
-    const cs = N[id].camps.filter(c => inBook(c[0]));
+    const cs = N[id].camps.filter(c => inBook(c[0]) && !spoilHide(c[0]));
     if (cs.length < 2) return '';
     return `<p class="camps"><b>${T[lang].camps}</b>` + cs.map(c =>
       `<span class="cstep${when(c[0])}">${chipBtn(c[0])}<span class="pill campp camp-${c[1]}">${esc(campName(c[1]))}</span>${campLabel(c)}</span>`).join('<span class="arr">→</span>') + '</p>';
@@ -1365,6 +1446,10 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
       });
     });
     if (n.dies) items.push({ c: n.dies, o: 3, html: violent(id) ? `<span class="ev ev-out">✕ ${esc(L(n, 'death'))}</span>` : `<span class="ev ev-nat">${esc(L(n, 'death'))}</span>` });
+    (n.down || []).forEach(d => {
+      items.push({ c: d[0], o: 3, html: `<span class="ev ev-out">✕ ${esc(lang === 'zh' ? d[2] : d[3])}</span>` });
+      items.push({ c: d[1], o: 0, html: `<span class="ev ev-in">${esc(lang === 'zh' ? d[4] : d[5])}</span>` });
+    });
     items.sort((a, b) => a.c - b.c || a.o - b.o);
     return items.filter(it => inBook(it.c));
   }
@@ -1385,37 +1470,45 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
     view = { kind: 'node', id };
     const n = N[id], tt = T[lang];
     let lastC = 0;
-    const life = lifeItems(id).map(it => {
+    const all = lifeItems(id), items = all.filter(it => !spoilHide(it.c)), hiddenN = all.length - items.length;
+    const life = items.map(it => {
       const head = it.c !== lastC ? chipBtn(it.c) + lateTag(it.c) : '<span class="chref ghost"></span>';
       lastC = it.c;
       return `<li class="litem${when(it.c)}${isLate(it.c) ? ' lt' : ''}">${head}<div class="lbody">${it.html}</div></li>`;
     }).join('');
     const lateBio = late && n.late ? `<p class="cbio cbio-late"><span class="latehd">${esc(tt.lateBio)}</span>${linkChapters(L(n, 'late'))}</p>` : '';
+    let bio;
+    if (n.bios) {                 // entries shown from their episode on
+      const vis = n.bios.filter(b => !spoilHide(b[0])), rest = n.bios.length - vis.length;
+      bio = vis.map(b => `<p class="cbio">${linkChapters(lang === 'zh' ? b[1] : b[2])}</p>`).join('') +
+        (rest ? `<p class="cbio spoil">${esc(tt.later(rest))}</p>` : '');
+    } else bio = `<p class="cbio">${linkChapters(L(n, 'bio'))}</p>`;
+    const nameLine = n.full ? `${esc(L(n, 'full'))}<span class="cen">${esc(lang === 'zh' ? n.full_en : n.full)}</span>` : esc(n.gr) + altName(id);
     panel.innerHTML = `${trailHtml()}
       <div class="ch"><span class="big">${mini(id, 84)}</span><div>
         <h2 class="cname">${esc(nm(id))}</h2>
-        <div class="cgr">${esc(n.gr)}${altName(id)}</div>
+        <div class="cgr">${nameLine}</div>
         <div class="cmeta">${pills(id)}</div></div></div>
-      <p class="cmeta" style="margin-top:8px">${esc(L(n, 'sub'))}</p>
+      <p class="cmeta" style="margin-top:8px">${esc(subOf(id))}</p>
       ${campLine(id)}
-      <p class="cbio">${linkChapters(L(n, 'bio'))}</p>
+      ${bio}
       ${lateBio}
-      <p class="cicon"><b>${tt.portrait}</b>${linkChapters(L(n, 'icon'))}</p>
+      ${n.icon ? `<p class="cicon"><b>${tt.portrait}</b>${linkChapters(L(n, 'icon'))}</p>` : ''}
       ${verseHtml(id)}
       <h3 class="lifeh">${tt.life}</h3>
-      <ol class="life">${life}</ol>`;
+      <ol class="life">${life}</ol>${hiddenN && tt.laterLife ? `<p class="cbio spoil">${esc(tt.laterLife(hiddenN))}</p>` : ''}`;
     panel.scrollTop = 0;
   }
   function showEdge(i) {
     view = { kind: 'edge', id: i };
     const e = E[i], tt = T[lang], k = phaseIdx(e), p = e.phases[Math.max(0, k)], ty = DATA.types[p.type];
     labEl.forEach(g => g.classList.remove('on')); if (labEl[i]) labEl[i].classList.add('on');
-    const phs = e.phases.filter(q => inBook(q.ch));
+    const phs = e.phases.filter(q => inBook(q.ch) && !spoilHide(q.ch));
     const hist = phs.map((q, j) =>
       `<li class="hitem${j === k ? ' nowp' : ''}${!isAll() && q.ch > t ? ' later' : ''}${isLate(q.ch) ? ' lt' : ''}">${chipBtn(q.ch)}${lateTag(q.ch)}<div class="lbody">` +
       `<span class="pill t-${q.type}">${esc(lang === 'zh' ? DATA.types[q.type].zh : DATA.types[q.type].en)}</span>` +
       `<b class="hl">${esc(L(q, 'label'))}</b><span class="ltext">${esc(L(q, 'text'))}</span>` +
-      (q.bk_en !== `Chapter ${q.ch}` ? `<span class="src">${tt.src}${esc(L(q, 'bk'))}</span>` : '') + '</div></li>').join('');
+      ((q.alt !== undefined ? q.alt : q.bk_en !== `Chapter ${q.ch}`) ? `<span class="src">${tt.src}${esc(L(q, 'bk'))}</span>` : '') + '</div></li>').join('');
     panel.innerHTML = `${trailHtml()}
       <div class="pair">
         <button class="who2" type="button" data-go="${e.s}">${mini(e.s, 58)}<span class="nmx">${esc(nm(e.s))}</span></button>
@@ -1494,7 +1587,8 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
       const np = IDS.filter(id => inBook(N[id].debut)).length, nr = E.filter(e => inBook(e.phases[0].ch)).length;
       statEl.innerHTML = esc(tt.stat(np, nr));
     } else {
-      const nu = IDS.filter(id => N[id].debut === t), de = IDS.filter(id => N[id].dies === t);
+      const nu = IDS.filter(id => N[id].debut === t && !N[id].pre),
+        de = IDS.filter(id => N[id].dies === t || (N[id].down && N[id].down.some(d => d[0] === t)));
       const nr = E.filter(e => e.phases.some(p => p.ch === t)).length;
       const who = ids => ids.map(id => `<button type="button" data-go="${id}">${esc(nm(id))}</button>`).join(lang === 'zh' ? '、' : ', ');
       const parts = [];
@@ -1530,6 +1624,7 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
     nt = nt === ALL ? ALL : Math.max(1, Math.min(lastCh(), nt));
     if (nt === t && !opts.force) return;
     t = nt;
+    if (DATA.remember) { try { localStorage.setItem(TKEY, String(t)); } catch (e) { /* storage unavailable */ } }
     setNodeStates();
     renderTimeline();
     if (opts.quiet) { setEdgeVisibility(); relabel(); return; }
@@ -1738,7 +1833,16 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
     if (lateBtn) lateBtn.setAttribute('aria-pressed', String(late));
     app.classList.toggle('late-on', late);
   }
-  const chTok = tokens.map(x => /^c(\d{1,3})$/.exec(x)).find(Boolean);
+  let chTok = tokens.map(x => /^c(\d{1,3})$/.exec(x)).find(Boolean);
+  if (SEAS && !chTok) {
+    const m = tokens.map(x => /^s(\d)e(\d{1,2})$/.exec(x)).find(Boolean);
+    if (m) chTok = [m[0], String(seIdx(+m[1], +m[2]))];
+  }
+  if (!chTok && DATA.remember && !tokens.includes('all')) {
+    let st = null;
+    try { st = localStorage.getItem(TKEY); } catch (e) { /* storage unavailable */ }
+    if (st && /^\d{1,3}$/.test(st) && +st !== ALL) chTok = ['', st];
+  }
   if (chTok) {
     if (CUT && +chTok[1] > CUT) { late = true; if (lateBtn) lateBtn.setAttribute('aria-pressed', 'true'); app.classList.add('late-on'); }
     t = Math.max(1, Math.min(lastCh(), +chTok[1]));

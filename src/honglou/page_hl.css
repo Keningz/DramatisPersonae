@@ -1,0 +1,72 @@
+/* ---------- Dream of the Red Chamber: households, the family tree */
+:root{--ning:#B0413E;--rong:#2F5F98;--gong:#A8801E;--lin:#3D8A5A;--shi:#23838F;--wang:#C46A28;--xue:#8556A8;--out:#8C7B62;--kong:#687B88;--love:#C83F7E;--seal:#B8322E}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--ning:#EE7A72;--rong:#7FA8E6;--gong:#E0B546;--lin:#6CC08C;--shi:#5EC4CE;--wang:#F09B5F;--xue:#BC98E0;--out:#B3A48A;--kong:#A3B6C3;--love:#F28AB8;--seal:#D9564C} }
+:root[data-theme="dark"]{--ning:#EE7A72;--rong:#7FA8E6;--gong:#E0B546;--lin:#6CC08C;--shi:#5EC4CE;--wang:#F09B5F;--xue:#BC98E0;--out:#B3A48A;--kong:#A3B6C3;--love:#F28AB8;--seal:#D9564C}
+.page{--f-greek:"EB Garamond","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif}
+.eyebrow .gr{font-family:var(--f-display);letter-spacing:.3em;font-weight:700}
+.cgr{font-size:15px;letter-spacing:.02em}
+.rgr{font-size:13.5px}
+
+.camp-ning .ring{stroke:var(--ning)} .camp-rong .ring{stroke:var(--rong)} .camp-gong .ring{stroke:var(--gong)}
+.camp-lin .ring{stroke:var(--lin)} .camp-shi .ring{stroke:var(--shi)} .camp-wang .ring{stroke:var(--wang)}
+.camp-xue .ring{stroke:var(--xue)} .camp-out .ring{stroke:var(--out)} .camp-kong .ring{stroke:var(--kong)}
+.pill.campp{font-weight:600}
+.pill.campp.camp-ning{color:var(--ning)} .pill.campp.camp-rong{color:var(--rong)} .pill.campp.camp-gong{color:var(--gong)}
+.pill.campp.camp-lin{color:var(--lin)} .pill.campp.camp-shi{color:var(--shi)} .pill.campp.camp-wang{color:var(--wang)}
+.pill.campp.camp-xue{color:var(--xue)} .pill.campp.camp-out{color:var(--out)} .pill.campp.camp-kong{color:var(--kong)}
+.pill.chp{color:var(--muted)}
+.sw{display:inline-block;width:14px;height:14px;border-radius:50%;border:3px solid;box-sizing:border-box;background:var(--paper)}
+.sw.camp-ning{border-color:var(--ning)} .sw.camp-rong{border-color:var(--rong)} .sw.camp-gong{border-color:var(--gong)}
+.sw.camp-lin{border-color:var(--lin)} .sw.camp-shi{border-color:var(--shi)} .sw.camp-wang{border-color:var(--wang)}
+.sw.camp-xue{border-color:var(--xue)} .sw.camp-out{border-color:var(--out)} .sw.camp-kong{border-color:var(--kong)}
+.legend .lg:first-child{gap:6px 14px}
+.sealmark{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:3px;background:var(--seal);color:#fff;font-size:11px;line-height:1;font-family:var(--f-display);font-weight:700}
+
+/* the new line type: love */
+.tog.t-love svg line{stroke:var(--love);stroke-width:2.4}
+.edge.t-love{stroke:var(--love)}
+#map.mode-fc .edge.t-love.vis{stroke-width:2.6}
+.elab.t-love rect{stroke:var(--love)} .elab.t-love text{fill:var(--love)}
+.pill.t-love{color:var(--love)}
+
+/* the family tree */
+.deco .col{fill:var(--paper);opacity:.5}
+.deco .col-ning{fill:color-mix(in srgb,var(--ning) 7%,var(--paper));opacity:.7}
+.deco .col-rong{fill:color-mix(in srgb,var(--rong) 6%,var(--paper));opacity:.7}
+.deco .col-lin{fill:color-mix(in srgb,var(--lin) 8%,var(--paper));opacity:.7}
+.deco .col-shi{fill:color-mix(in srgb,var(--shi) 8%,var(--paper));opacity:.7}
+.deco .col-wang{fill:none}
+.deco .col-xue{fill:color-mix(in srgb,var(--xue) 7%,var(--paper));opacity:.7}
+.deco .colname{font-family:var(--f-display);font-size:17px;font-weight:700;letter-spacing:.24em;opacity:.85}
+.page[data-lang="en"] .deco .colname{font-family:var(--f-body);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+.deco .c-ning{fill:var(--ning)} .deco .c-rong{fill:var(--rong)} .deco .c-lin{fill:var(--lin)} .deco .c-shi{fill:var(--shi)}
+.deco .c-wang{fill:var(--wang)} .deco .c-xue{fill:var(--xue)} .deco .c-kong{fill:var(--kong)}
+.deco .branch{font-size:12px;fill:var(--muted);letter-spacing:.12em}
+.page[data-lang="en"] .deco .branch{letter-spacing:.04em}
+.deco .gen{font-family:var(--f-display);font-size:19px;font-weight:700;fill:var(--ink);opacity:.5;letter-spacing:0}
+.page[data-lang="en"] .deco .gen{font-family:var(--f-body);font-size:13px}
+.deco .gensub{font-size:10px;fill:var(--muted);letter-spacing:0}
+.deco .genline{stroke:var(--hair)}
+.deco .gl{stroke:var(--kin);stroke-width:1.15;opacity:.5;fill:none}
+.deco .gl.con{stroke-dasharray:4 3}
+.deco .gl.sis{stroke-dasharray:2 3;opacity:.45}
+.deco .ghost circle{fill:var(--paper);stroke:var(--muted);stroke-dasharray:2 2.4;stroke-width:1}
+.deco .gname{font-size:10.5px;fill:var(--muted);letter-spacing:0}
+.deco .gtag{font-size:10.5px;fill:var(--muted);letter-spacing:.04em}
+.deco .xian{fill:color-mix(in srgb,var(--kong) 9%,transparent);stroke:var(--kong);stroke-dasharray:3 4;stroke-width:1;opacity:.9}
+.deco .clan{fill:none;stroke:var(--muted);stroke-dasharray:3 4;opacity:.5}
+.deco .amuhd{font-size:12px;fill:var(--muted);letter-spacing:.1em}
+.deco .amu{font-family:var(--f-display);font-size:13.5px;fill:var(--ink);opacity:.62;letter-spacing:.08em}
+.page[data-lang="en"] .deco .amu{font-family:var(--f-greek);font-size:12px;letter-spacing:0;font-style:italic}
+.deco .band{fill:var(--paper);opacity:.5}
+.deco .lname{font-family:var(--f-display);font-size:16px;font-weight:700;fill:var(--ink);opacity:.45;letter-spacing:0}
+.deco .lname.l-en{font-family:var(--f-body);font-size:11px;letter-spacing:.18em}
+.node .seal rect{fill:var(--seal);stroke:var(--paper);stroke-width:1.6}
+.node .seal text{fill:#fff;font-family:var(--f-display);font-size:11.5px;font-weight:700}
+#map.mode-fc .node .seal{display:none}
+.node.fut .seal{display:none}
+
+/* in the family tree the relationship lines stay faint until a chapter or a person brings them forward */
+#map.mode-ov .edge{opacity:.035}
+#map.mode-ov .edge.past{opacity:.03}
+#map.mode-ov .edge.fresh{opacity:.9;stroke-width:2.6}
