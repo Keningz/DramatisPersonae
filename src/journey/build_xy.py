@@ -143,7 +143,7 @@ for key, zh, en, dzh, den, items in groups:
         v = n['id']
         roster += (f'<button class="rcard" data-id="{v}" type="button">{mini(v, 64, "rp")}'
                    f'<span class="rtext"><span class="rname">{bi(esc(n["zh"]), esc(n["en"]))}'
-                   f'<span class="rgr">{bi(esc(n["py"]), esc(n["zh"]))}</span>{SITE_MOD.xtags(CROSS.get(v, []))}</span>'
+                   f'<span class="rgr">{esc(n["py"])}</span>{SITE_MOD.xtags(CROSS.get(v, []))}</span>'
                    f'<span class="rsub">{bi(esc(n["sub"][0]), esc(n["sub"][1]))}</span>'
                    f'<span class="rbio">{bi(esc(n["bio"][0]), esc(n["bio"][1]))}</span></span></button>')
     roster += '</div></div>'
@@ -215,7 +215,7 @@ body = f'''<svg width="0" height="0" style="position:absolute" aria-hidden="true
       <button type="button" data-setlang="en" aria-pressed="false" lang="en">English</button>
     </div>
   </div>
-  <p class="eyebrow">{bi('明 · 吴承恩', 'Wu Cheng’en, Ming dynasty')} <span class="gr">西遊記</span> {bi('一百回', '100 chapters')}</p>
+  <p class="eyebrow">{bi('明 · 吴承恩', 'Wu Cheng’en, Ming dynasty')} <span class="gr">{bi('西遊記', 'Xīyóu Jì')}</span> {bi('一百回', '100 chapters')}</p>
   <h1>{bi('西游记人物谱', 'Who’s Who in Journey to the West')}</h1>
   <p class="lede">{bi(f'{len(NODES)} 位神佛、凡人与妖魔，{len(EDGES)} 段关系。点谁，谁就走到中央；橙色的线告诉你，哪些妖怪背后有人。',
                        f'{len(NODES)} gods, mortals and demons, {len(EDGES)} relationships. Click anyone to bring them to the center; the orange lines show which demons have someone powerful behind them.')}</p>

@@ -352,6 +352,15 @@ window.dpCross = function (xs, lang) {
 window.dpLinks = function (lang) {
   document.querySelectorAll('a[data-xhref]').forEach(a => a.setAttribute('href', a.dataset.xhref + '#' + lang));
   document.querySelectorAll('a[data-xperson]').forEach(a => a.setAttribute('href', a.dataset.xfile + '#' + lang + '.' + a.dataset.xperson));
+  // bilingual labels written as "中文 / English" keep only the chosen language (the language switcher keeps both)
+  [['aria-label', 'al'], ['title', 'tl']].forEach(([attr, key]) => {
+    document.querySelectorAll(`[${attr}*=" / "]`).forEach(el => {
+      if (el.closest('.langsw')) return;
+      if (!el.dataset[key]) el.dataset[key] = el.getAttribute(attr);
+      const [zh, en] = el.dataset[key].split(' / ');
+      el.setAttribute(attr, lang === 'zh' ? zh : en);
+    });
+  });
 };
 window.dpHash = function () {
   return (location.hash || '').replace('#', '').toLowerCase().split(/[.\-_~]/).filter(Boolean);
@@ -431,7 +440,7 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
     card.innerHTML = `<button class="x" type="button" aria-label="${t.close}">×</button>
       <div class="ch"><span class="big">${mini(id, 84)}</span><div>
         <h2 class="cname">${esc(nm(id))}</h2>
-        <div class="cgr">${esc(n.gr)}<span class="cen">${esc(lang === 'zh' ? n.en : n.zh)}</span></div>
+        <div class="cgr">${esc(n.gr)}${lang === 'zh' ? `<span class="cen">${esc(n.en)}</span>` : ''}</div>
         <div class="cmeta"><span class="pill cat-${n.cat}">${DATA.cat[lang][n.cat]}</span>${esc(f(n, 'sub'))}</div></div></div>
       <p class="cbio">${esc(f(n, 'bio'))}</p>
       <p class="cicon"><b>${t.portrait}</b>${esc(f(n, 'icon'))}</p>

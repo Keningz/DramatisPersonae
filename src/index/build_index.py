@@ -183,7 +183,7 @@ for b in S.BOOKS:
     meta_zh = f'<span class="l-zh" lang="zh-CN">{au_zh} · {bk_zh} · {nn} 位人物 · {ne} 段关系</span>'
     meta_en = f'<span class="l-en" lang="en">{au_en} · {bk_en} · {nn} people · {ne} relationships</span>'
     cards += (f'<a class="book" href="{b["file"]}" data-xhref="{b["file"]}">'
-              f'<span class="gr{ {"roman": " la", "chinese": " cn", "english": " tv"}.get(b["names"], "") }">{b["gr"]}</span>'
+              f'<span class="gr{ {"roman": " la", "chinese": " cn", "english": " tv"}.get(b["names"], "") }">{bi(b["gr"], b["gr_en"]) if b.get("gr_en") else b["gr"]}</span>'
               f'<h2>{bi("《" + b["zh"] + "》", b["en"])}</h2>'
               f'<span class="meta">{meta_zh}{meta_en}</span>'
               f'<span class="strip">{strip}</span>'
@@ -211,7 +211,7 @@ for k in SHARED:
                f'<span class="nm">{bi(nm_zh, nm_en)}<span class="gk">{esc(greek["gr"])}</span></span>'
                f'<span class="ln">{bi(note[0], note[1])}</span><span class="links">{links}</span></div></li>')
 
-css = S.FONTFACES + open(os.path.join(HERE, 'index.css'), encoding='utf-8').read() + S.NAV_CSS
+css = S.FONTFACES + S.PINYIN_FACE + open(os.path.join(HERE, 'index.css'), encoding='utf-8').read() + S.NAV_CSS
 js = S.NAV_JS + '''
 (() => {
   const app = document.getElementById('app');

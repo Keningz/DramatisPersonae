@@ -18,11 +18,11 @@ BOOKS = [
     dict(id='aeneid', file='aeneid.html', zh='埃涅阿斯纪', en='The Aeneid', en_short='Aeneid', en_in='the Aeneid',
          gr='AENEIS', names='roman', people=('aeneid', 'data_ae.py')),
     dict(id='journey', file='journey.html', zh='西游记', en='Journey to the West', en_short='Journey to the West',
-         en_in='Journey to the West', gr='西遊記', names='chinese', people=('journey', 'data_xy.py')),
+         en_in='Journey to the West', gr='西遊記', gr_en='Xīyóu Jì', names='chinese', people=('journey', 'data_xy.py')),
     dict(id='sanguo', file='sanguo.html', zh='三国演义', en='Romance of the Three Kingdoms', en_short='Three Kingdoms',
-         en_in='the Romance of the Three Kingdoms', gr='三國演義', names='chinese', people=('sanguo', 'data_sg.py')),
+         en_in='the Romance of the Three Kingdoms', gr='三國演義', gr_en='Sānguó Yǎnyì', names='chinese', people=('sanguo', 'data_sg.py')),
     dict(id='honglou', file='honglou.html', zh='红楼梦', en='Dream of the Red Chamber', en_short='Red Chamber',
-         en_in='the Dream of the Red Chamber', gr='紅樓夢', names='chinese', people=('honglou', 'data_hl.py')),
+         en_in='the Dream of the Red Chamber', gr='紅樓夢', gr_en='Hónglóu Mèng', names='chinese', people=('honglou', 'data_hl.py')),
     dict(id='got', file='got.html', zh='权力的游戏', en='Game of Thrones', en_short='Game of Thrones',
          en_in='Game of Thrones', gr='2011–2019', names='english', people=('got', 'data_got.py')),
 ]
@@ -124,6 +124,15 @@ window.dpCross = function (xs, lang) {
 window.dpLinks = function (lang) {
   document.querySelectorAll('a[data-xhref]').forEach(a => a.setAttribute('href', a.dataset.xhref + '#' + lang));
   document.querySelectorAll('a[data-xperson]').forEach(a => a.setAttribute('href', a.dataset.xfile + '#' + lang + '.' + a.dataset.xperson));
+  // bilingual labels written as "中文 / English" keep only the chosen language (the language switcher keeps both)
+  [['aria-label', 'al'], ['title', 'tl']].forEach(([attr, key]) => {
+    document.querySelectorAll(`[${attr}*=" / "]`).forEach(el => {
+      if (el.closest('.langsw')) return;
+      if (!el.dataset[key]) el.dataset[key] = el.getAttribute(attr);
+      const [zh, en] = el.dataset[key].split(' / ');
+      el.setAttribute(attr, lang === 'zh' ? zh : en);
+    });
+  });
 };
 window.dpHash = function () {
   return (location.hash || '').replace('#', '').toLowerCase().split(/[.\\-_~]/).filter(Boolean);

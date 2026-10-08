@@ -71,7 +71,7 @@
     card.innerHTML = `<button class="x" type="button" aria-label="${t.close}">×</button>
       <div class="ch"><span class="big">${mini(id, 84)}</span><div>
         <h2 class="cname">${esc(nm(id))}</h2>
-        <div class="cgr">${esc(n.gr)}<span class="cen">${esc(lang === 'zh' ? n.en : n.zh)}</span></div>
+        <div class="cgr">${esc(n.gr)}${lang === 'zh' ? `<span class="cen">${esc(n.en)}</span>` : ''}</div>
         <div class="cmeta"><span class="pill cat-${n.cat}">${DATA.cat[lang][n.cat]}</span>${esc(f(n, 'sub'))}</div></div></div>
       <p class="cbio">${esc(f(n, 'bio'))}</p>
       <p class="cicon"><b>${t.portrait}</b>${esc(f(n, 'icon'))}</p>

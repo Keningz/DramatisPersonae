@@ -191,7 +191,8 @@ def node_svg(v):
     s += '<circle class="ring" r="40" stroke-width="3.6"/>'
     if n['born']:      # a little seal with the woman's birth family, shown in the overview
         s += (f'<g class="seal" transform="translate(-31 -31)"><rect x="-8" y="-8" width="16" height="16" rx="2.5"/>'
-              f'<text y="5.2" text-anchor="middle">{esc(n["born"][0][0])}</text></g>')
+              f'<text class="l-zh" y="5.2" text-anchor="middle">{esc(n["born"][0][0])}</text>'
+              f'<text class="l-en" y="4.4" text-anchor="middle">{esc(n["born"][1][0])}</text></g>')
     if (n['death'] and n['death'][2]) or n['down']:
         s += DEAD
     s += '</g>'
@@ -372,7 +373,7 @@ for key, zh, en, dzh, den in GROUPS:
         when_en = ('First mentioned in ' if n['dies'] == 0 else 'Appears in ') + code(n['debut'])
         roster += (f'<button class="rcard" data-id="{v}" type="button">{mini(v, 64, "rp")}'
                    f'<span class="rtext"><span class="rname">{bi(esc(n["zh"]), esc(n["en"]))}'
-                   f'<span class="rgr">{bi(esc(n["full"][1]), esc(n["full"][0]))}</span></span>'
+                   f'<span class="rgr">{bi(esc(n["full"][1]), esc(n["full"][1]) if n["full"][1] != n["en"] else "")}</span></span>'
                    f'<span class="rsub">{bi(esc(fz), esc(fe))}</span>'
                    f'<span class="rlife">{bi(when_zh, when_en)}</span>'
                    f'<span class="rbio">{bi(esc(strip_refs(b0[1])), esc(strip_refs(b0[2])))}</span></span></button>')
@@ -473,7 +474,7 @@ css = SITE_MOD.FONTFACES + css_raw + SITE_MOD.NAV_CSS
 legend = (f'<div class="lg"><span class="lgt">{bi("外圈＝此时的阵营", "Outer ring = side at the time")}</span>{swatches}'
           f'<span class="lgi"><span class="sw gonesw" aria-hidden="true"></span>{bi("已死（变灰）", "Dead (greyed)")}</span>'
           f'<span class="lgi"><span class="deadmark" aria-hidden="true">✕</span>{bi("死于非命", "Violent death")}</span>'
-          f'<span class="lgi"><span class="sealmark" aria-hidden="true">徒</span>{bi("娘家", "Born into")}</span></div>'
+          f'<span class="lgi"><span class="sealmark l-zh" aria-hidden="true">徒</span><span class="sealmark l-en" aria-hidden="true">T</span>{bi("娘家", "Birth family (initial)")}</span></div>'
           f'<div class="lg" role="group" aria-label="按关系类型显示连线 / Show lines by type"><span class="lgt">{bi("连线", "Lines")}</span>{toggles}</div>'
           f'<details class="emlg"><summary>{bi("印章上的图案：此时的身份", "Seal emblems: the role at the time")}</summary><div class="emgrid">{emblem_key}</div></details>')
 

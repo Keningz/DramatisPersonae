@@ -364,11 +364,12 @@
       : `<button type="button" data-go="${id}">${esc(nm(id))}</button>`).join('<span class="sep">›</span>');
     return `<nav class="trail" aria-label="${T[lang].trail}">${items}</nav>`;
   }
-  // the name in the other language, unless it only repeats the original-language name (Aeneas / AENEAS, Sun Wukong / Sūn Wùkōng)
+  // the English name under the Chinese one, unless it only repeats the original-language name (Aeneas / AENEAS, Sun Wukong / Sūn Wùkōng);
+  // English pages show no Chinese
   const plain = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z]/gi, '').toLowerCase();
   function altName(id) {
-    const n = N[id], other = lang === 'zh' ? n.en : n.zh;
-    return lang === 'zh' && plain(other) === plain(n.gr) ? '' : `<span class="cen">${esc(other)}</span>`;
+    const n = N[id];
+    return lang === 'en' || plain(n.en) === plain(n.gr) ? '' : `<span class="cen">${esc(n.en)}</span>`;
   }
   function crossHtml(id) {
     return window.dpCross((DATA.cross || {})[id], lang);

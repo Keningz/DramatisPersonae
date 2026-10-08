@@ -2,5 +2,6 @@
 /* ---------- Journey to the West: pinyin in EB Garamond, the Chinese title in the display face */
 .page{--f-greek:"EB Garamond","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif}
 .eyebrow .gr{font-family:var(--f-display);letter-spacing:.3em;font-weight:700}
+[data-lang="en"] .eyebrow .gr{font-family:"EB Garamond","Iowan Old Style",Palatino,Georgia,serif;letter-spacing:.06em;font-weight:500}
 .cgr{font-size:15px;letter-spacing:.02em}
 .rgr{font-size:13.5px}

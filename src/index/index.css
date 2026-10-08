@@ -82,6 +82,7 @@ h1{margin:0;font-family:var(--f-display);font-weight:900;font-size:clamp(44px,7v
 .mini.cat-monster .halo{display:none}
 .xlist li > .mini{flex:none}
 .book .gr.cn{font-family:var(--f-display);font-size:16px;font-weight:700;letter-spacing:.34em}
+.page[data-lang="en"] .book .gr.cn{font-family:"EB Garamond","Iowan Old Style",Palatino,Georgia,serif;font-size:15px;font-weight:500;letter-spacing:.12em}
 .mini.cat-demimon .ring-g{stroke:var(--god)} .mini .ring-x{stroke:var(--monster)}
 
 /* Three Kingdoms: the ring is the person's side */

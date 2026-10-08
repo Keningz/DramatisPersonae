@@ -143,7 +143,6 @@
 .page[data-lang="en"] .vtext{font-family:var(--f-greek,var(--f-body));font-size:15.5px;line-height:1.5;letter-spacing:0}
 .page[data-lang="en"] .vtext .vl{padding-left:1.2em;text-indent:-1.2em}
 .vl{display:block}
-.vorig{margin:8px 0 0!important;font-family:var(--f-display);font-size:13px;color:var(--muted);line-height:1.65}
 .vnote{margin:8px 0 0!important;font-size:12.5px;color:var(--muted);line-height:1.55}
 .v-poem .vtext{font-size:15px}
 /* TV series: seals instead of portraits, spoiler notes */

@@ -106,7 +106,8 @@ def node_svg(v):
     s += '<circle class="ring" r="40" stroke-width="3.6"/>'
     if n['born']:      # a little seal with the woman's birth family, shown in the overview
         s += (f'<g class="seal" transform="translate(-31 -31)"><rect x="-8" y="-8" width="16" height="16" rx="2.5"/>'
-              f'<text y="5.2" text-anchor="middle">{esc(n["born"][0])}</text></g>')
+              f'<text class="l-zh" y="5.2" text-anchor="middle">{esc(n["born"][0])}</text>'
+              f'<text class="l-en" y="4.4" text-anchor="middle">{esc(n["born"][1][0])}</text></g>')
     if n['death'] and n['death'][2]:
         s += DEAD
     s += '</g>'
@@ -298,7 +299,7 @@ for key, zh, en, dzh, den in GROUPS:
         v = n['id']
         roster += (f'<button class="rcard" data-id="{v}" type="button">{mini(v, 64, "rp")}'
                    f'<span class="rtext"><span class="rname">{bi(esc(n["zh"]), esc(n["en"]))}'
-                   f'<span class="rgr">{bi(esc(n["py"]), esc(n["zh"]))}</span></span>'
+                   f'<span class="rgr">{esc(n["py"])}</span></span>'
                    f'<span class="rsub">{bi(esc(n["sub"][0]), esc(n["sub"][1]))}</span>'
                    f'<span class="rlife">{life_line(n)}</span>'
                    f'<span class="rbio">{bi(esc(strip_refs(n["bio"][0])), esc(strip_refs(n["bio"][1])))}</span></span></button>')
@@ -385,7 +386,7 @@ css = SITE_MOD.FONTFACES + SITE_MOD.PINYIN_FACE + css_raw + SITE_MOD.NAV_CSS
 legend = (f'<div class="lg"><span class="lgt">{bi("小像边框＝此时所在", "Border = household at the time")}</span>{swatches}'
           f'<span class="lgi"><span class="sw gonesw" aria-hidden="true"></span>{bi("已去世（变灰）", "Dead (greyed)")}</span>'
           f'<span class="lgi"><span class="deadmark" aria-hidden="true">✕</span>{bi("死于非命", "Violent death")}</span>'
-          f'<span class="lgi"><span class="sealmark" aria-hidden="true">史</span>{bi("娘家", "Born into")}</span></div>'
+          f'<span class="lgi"><span class="sealmark l-zh" aria-hidden="true">史</span><span class="sealmark l-en" aria-hidden="true">S</span>{bi("娘家", "Birth family (initial)")}</span></div>'
           f'<div class="lg" role="group" aria-label="按关系类型显示连线 / Show lines by type"><span class="lgt">{bi("连线", "Lines")}</span>{toggles}</div>')
 
 body = f'''<svg width="0" height="0" style="position:absolute" aria-hidden="true" xmlns:xlink="http://www.w3.org/1999/xlink"><defs>{symbols([n['id'] for n in NODES])}</defs></svg>
@@ -398,7 +399,7 @@ body = f'''<svg width="0" height="0" style="position:absolute" aria-hidden="true
       <button type="button" data-setlang="en" aria-pressed="false" lang="en">English</button>
     </div>
   </div>
-  <p class="eyebrow">{bi('清 · 曹雪芹', 'Cao Xueqin, 18th century')} <span class="gr">紅樓夢</span> {bi('一百二十回', '120 chapters')}</p>
+  <p class="eyebrow">{bi('清 · 曹雪芹', 'Cao Xueqin, 18th century')} <span class="gr">{bi('紅樓夢', 'Hónglóu Mèng')}</span> {bi('一百二十回', '120 chapters')}</p>
   <h1>{bi('红楼梦人物谱', 'Who’s Who in the Dream of the Red Chamber')}</h1>
   <p class="lede">{bi(f'贾、史、王、薛四大家族，{len(NODES)} 位主子、丫鬟与过客，{len(EDGES)} 段随回目变化的关系。拖动回目，看他们相聚、相爱、离散。',
                        f'The four great families of Jinling — {len(NODES)} masters, maids and passers-by, and {len(EDGES)} relationships that change chapter by chapter. Move through the book and watch them gather, love and scatter.')}</p>

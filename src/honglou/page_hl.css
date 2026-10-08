@@ -4,6 +4,7 @@
 :root[data-theme="dark"]{--ning:#EE7A72;--rong:#7FA8E6;--gong:#E0B546;--lin:#6CC08C;--shi:#5EC4CE;--wang:#F09B5F;--xue:#BC98E0;--out:#B3A48A;--kong:#A3B6C3;--love:#F28AB8;--seal:#D9564C}
 .page{--f-greek:"EB Garamond","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif}
 .eyebrow .gr{font-family:var(--f-display);letter-spacing:.3em;font-weight:700}
+[data-lang="en"] .eyebrow .gr{font-family:"EB Garamond","Iowan Old Style",Palatino,Georgia,serif;letter-spacing:.06em;font-weight:500}
 .cgr{font-size:15px;letter-spacing:.02em}
 .rgr{font-size:13.5px}
 
@@ -63,6 +64,7 @@
 .deco .lname.l-en{font-family:var(--f-body);font-size:11px;letter-spacing:.18em}
 .node .seal rect{fill:var(--seal);stroke:var(--paper);stroke-width:1.6}
 .node .seal text{fill:#fff;font-family:var(--f-display);font-size:11.5px;font-weight:700}
+.node .seal text.l-en,.sealmark.l-en{font-family:"EB Garamond","Iowan Old Style",Palatino,Georgia,serif;font-weight:700}
 #map.mode-fc .node .seal{display:none}
 .node.fut .seal{display:none}
 

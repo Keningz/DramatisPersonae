@@ -227,7 +227,7 @@ for key, _, _ in LANES:
         v = n['id']
         roster += (f'<button class="rcard" data-id="{v}" type="button">{mini(v, 64, "rp")}'
                    f'<span class="rtext"><span class="rname">{bi(esc(n["zh"]), esc(n["en"]))}'
-                   f'<span class="rgr">{bi(esc(n["py"]), esc(n["zh"]))}</span></span>'
+                   f'<span class="rgr">{esc(n["py"])}</span></span>'
                    f'<span class="rsub">{bi(esc(n["sub"][0]), esc(n["sub"][1]))}</span>'
                    f'<span class="rlife">{life_line(n)}</span>'
                    f'<span class="rbio">{bi(esc(strip_refs(n["bio"][0])), esc(strip_refs(n["bio"][1])))}</span></span></button>')
@@ -318,7 +318,7 @@ body = f'''<svg width="0" height="0" style="position:absolute" aria-hidden="true
       <button type="button" data-setlang="en" aria-pressed="false" lang="en">English</button>
     </div>
   </div>
-  <p class="eyebrow">{bi('元末明初 · 罗贯中', 'Luo Guanzhong, 14th century')} <span class="gr">三國演義</span> {bi('一百二十回', '120 chapters')}</p>
+  <p class="eyebrow">{bi('元末明初 · 罗贯中', 'Luo Guanzhong, 14th century')} <span class="gr">{bi('三國演義', 'Sānguó Yǎnyì')}</span> {bi('一百二十回', '120 chapters')}</p>
   <h1>{bi('三国演义人物谱', 'Who’s Who in the Romance of the Three Kingdoms')}</h1>
   <p class="lede">{bi(f'{len(NODES)} 位英雄、谋士与君王，{len(EDGES)} 段会随回目变化的关系。拖动回目，看他们登场、结盟、反目、死去。',
                        f'{len(NODES)} heroes, strategists and rulers, and {len(EDGES)} relationships that change as the chapters go by. Move through the book and watch them enter, ally, turn on each other and die.')}</p>

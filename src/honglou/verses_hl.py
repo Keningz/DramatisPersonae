@@ -240,7 +240,7 @@ VERSES = {
          zh=["根并荷花一茎香，平生遭际实堪伤。", "自从两地生孤木，致使香魂返故乡。"],
          en=["Her root shares one fragrant stem with the lotus;", "her life has been sad indeed.",
              "Once a lone tree grows on two plots of earth,", "her fragrant soul goes home."],
-         note=("“两地生孤木”合成“桂”字，指夏金桂。", "Two plots of earth (土土) and a tree (木) make the character gui — Xia Jingui.")),
+         note=("“两地生孤木”合成“桂”字，指夏金桂。", "“Two plots of earth” and “a lone tree” put together make the character gui, as in Xia Jingui’s name.")),
   ],
   "baoyu": [
     dict(k="poem", t=("西江月二首（第3回）", "Two poems on Baoyu (ch. 3)"), pic=None,

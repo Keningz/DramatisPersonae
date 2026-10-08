@@ -524,8 +524,8 @@
   }
   const plain = s => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z]/gi, '').toLowerCase();
   function altName(id) {
-    const n = N[id], other = lang === 'zh' ? n.en : n.zh;
-    return lang === 'zh' && plain(other) === plain(n.gr) ? '' : `<span class="cen">${esc(other)}</span>`;
+    const n = N[id];
+    return lang === 'en' || plain(n.en) === plain(n.gr) ? '' : `<span class="cen">${esc(n.en)}</span>`;
   }
   const when = c => isAll() ? '' : c > t ? ' later' : c === t ? ' nowc' : '';
   const chipBtn = c => `<button type="button" class="chref" data-ch="${c}">${esc(chShort(c))}</button>`;
@@ -573,9 +573,8 @@
       const title = lang === 'zh' ? v.t[0] : v.t[1];
       const pic = v.pic ? `<p class="vpic">${esc(lang === 'zh' ? v.pic[0] : v.pic[1])}</p>` : '';
       const lines = (lang === 'zh' ? v.zh : v.en).map(l => `<span class="vl">${esc(l)}</span>`).join('');
-      const orig = lang === 'zh' ? '' : `<p class="vorig" lang="zh-CN">${v.zh.map(l => `<span class="vl">${esc(l)}</span>`).join('')}</p>`;
       const note = v.note ? `<p class="vnote">${esc(lang === 'zh' ? v.note[0] : v.note[1])}</p>` : '';
-      return `<figure class="verse v-${v.k}"><figcaption>${esc(title)}</figcaption>${pic}<p class="vtext">${lines}</p>${orig}${note}</figure>`;
+      return `<figure class="verse v-${v.k}"><figcaption>${esc(title)}</figcaption>${pic}<p class="vtext">${lines}</p>${note}</figure>`;
     }).join('');
   }
   function showNode(id) {
@@ -595,7 +594,7 @@
       bio = vis.map(b => `<p class="cbio">${linkChapters(lang === 'zh' ? b[1] : b[2])}</p>`).join('') +
         (rest ? `<p class="cbio spoil">${esc(tt.later(rest))}</p>` : '');
     } else bio = `<p class="cbio">${linkChapters(L(n, 'bio'))}</p>`;
-    const nameLine = n.full ? `${esc(L(n, 'full'))}<span class="cen">${esc(lang === 'zh' ? n.full_en : n.full)}</span>` : esc(n.gr) + altName(id);
+    const nameLine = n.full ? `${esc(L(n, 'full'))}${lang === 'zh' ? `<span class="cen">${esc(n.full_en)}</span>` : ''}` : esc(n.gr) + altName(id);
     panel.innerHTML = `${trailHtml()}
       <div class="ch"><span class="big">${mini(id, 84)}</span><div>
         <h2 class="cname">${esc(nm(id))}</h2>

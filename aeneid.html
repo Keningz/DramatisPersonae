@@ -414,6 +414,15 @@ window.dpCross = function (xs, lang) {
 window.dpLinks = function (lang) {
   document.querySelectorAll('a[data-xhref]').forEach(a => a.setAttribute('href', a.dataset.xhref + '#' + lang));
   document.querySelectorAll('a[data-xperson]').forEach(a => a.setAttribute('href', a.dataset.xfile + '#' + lang + '.' + a.dataset.xperson));
+  // bilingual labels written as "中文 / English" keep only the chosen language (the language switcher keeps both)
+  [['aria-label', 'al'], ['title', 'tl']].forEach(([attr, key]) => {
+    document.querySelectorAll(`[${attr}*=" / "]`).forEach(el => {
+      if (el.closest('.langsw')) return;
+      if (!el.dataset[key]) el.dataset[key] = el.getAttribute(attr);
+      const [zh, en] = el.dataset[key].split(' / ');
+      el.setAttribute(attr, lang === 'zh' ? zh : en);
+    });
+  });
 };
 window.dpHash = function () {
   return (location.hash || '').replace('#', '').toLowerCase().split(/[.\-_~]/).filter(Boolean);
@@ -786,11 +795,12 @@ window.dpSaveLang = function (l) { try { localStorage.setItem('dp-lang', l); } c
       : `<button type="button" data-go="${id}">${esc(nm(id))}</button>`).join('<span class="sep">›</span>');
     return `<nav class="trail" aria-label="${T[lang].trail}">${items}</nav>`;
   }
-  // the name in the other language, unless it only repeats the original-language name (Aeneas / AENEAS, Sun Wukong / Sūn Wùkōng)
+  // the English name under the Chinese one, unless it only repeats the original-language name (Aeneas / AENEAS, Sun Wukong / Sūn Wùkōng);
+  // English pages show no Chinese
   const plain = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z]/gi, '').toLowerCase();
   function altName(id) {
-    const n = N[id], other = lang === 'zh' ? n.en : n.zh;
-    return lang === 'zh' && plain(other) === plain(n.gr) ? '' : `<span class="cen">${esc(other)}</span>`;
+    const n = N[id];
+    return lang === 'en' || plain(n.en) === plain(n.gr) ? '' : `<span class="cen">${esc(n.en)}</span>`;
   }
   function crossHtml(id) {
     return window.dpCross((DATA.cross || {})[id], lang);
